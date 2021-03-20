@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="NowPlayingNode" extends="ContentNode">
+    <interface>
+        <field id="themeParkAndLand" type="string" />
+        <field id="attractionAndSong" type="string" />
+        <field id="schedule" type="string" />
+        <field id="requestor" type="string" />
+
+        <field id="blurredImageUrl" type="string" />
+        <field id="imageUrl" type="string" />
+        <field id="uabImageUrl" type="string" />
+
+        <field id="durationDisplay" type="string" />
+        <field id="duration" type="integer" />
+        <field id="timeLeft" type="integer" />
+        <field id="upNext" type="roArray" />
+    </interface>
+</component>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ListenScene" extends="BaseScene"
+  xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd"
+  initialFocus="audio_control_button">
+    <script type="text/brightscript" uri="pkg:/components/ListenScene.brs" />
+    <children>
+        <!-- Background image -->
+        <Poster id="background"
+          height="1080"
+          width="1920"
+          loadDisplayMode="scaleToZoom" />
+        <Rectangle height="1080" width="1920" color="0x00000055" />
+        <!-- Top bar -->
+        <Label id="title"
+            text="UABMagic - Now Playing"
+            color="0xFFFFFFAA"
+            translation="[20, 20]">
+            <Font
+                role="font"
+                uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+                id="avenir-light"
+                size="30"
+            />
+        </Label>
+        <!-- Song info -->
+        <LayoutGroup layoutDirection="horiz" itemSpacings="[50, 0]" translation="[50, 130]">
+          <Poster
+              id="current_show_image_path"
+              width="550"
+              height="550" />
+          <LayoutGroup layoutDirection="vert" itemSpacings="[0, 20]">
+            <Label id="current_show_name"
+              color="0xFFFFFFFF"
+              horizAlign="left"
+              width="1200">
+              <Font
+                role="font"
+                uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+                id="avenir-light"
+                size="30"
+              />
+            </Label>
+            <Label id="current_track_title" text="Loading..."
+              color="0xFFFFFFFF"
+              horizAlign="left"
+              width="1200"
+              wrap="true">
+              <Font
+                role="font"
+                uri="pkg:/components/fonts/avenir_85_heavy_latin.ttf"
+                id="avenir-heavy-latin"
+                size="50"
+              />
+            </Label>
+            <Label id="current_track_artist_name"
+              color="0xFFFFFFFF"
+              horizAlign="left"
+              width="1200">
+              <Font
+                role="font"
+                uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+                id="avenir-light"
+                size="40"
+              />
+            </Label>
+            <Label id="requestor"
+              color="0xFFFFFFFF"
+              horizAlign="left"
+              visible="false"
+              width="1200">
+              <Font
+                role="font"
+                uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+                id="avenir-light"
+                size="40"
+              />
+            </Label>
+            <!-- <LayoutGroup itemSpacings="[0, 10]">
+              <Label
+                color="0xFFFFFFFF"
+                horizAlign="left"
+                text="Upcoming songs"
+                visible="false"
+                width="1200"
+                wrap="true">
+                <Font
+                  role="font"
+                  uri="pkg:/components/fonts/avenir_85_heavy_latin.ttf"
+                  id="avenir-heavy-latin"
+                  size="25"
+                />
+              </Label>
+              <Rectangle height="2" width="300" color="0xFFFFFF88" />
+              <Label id="upcoming_track_info"
+                color="0xFFFFFFFF"
+                horizAlign="left"
+                width="1200"
+                wrap="true">
+                <Font
+                  role="font"
+                  uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+                  id="avenir-light"
+                  size="20"
+                />
+              </Label>
+            </LayoutGroup> -->
+          </LayoutGroup>
+        </LayoutGroup>
+        <!-- Media controls -->
+        <Rectangle id="progress_bar_background"
+          visible="false" height="10" width="1820"
+          color="0xFFFFFF44" translation="[50, 720]" />
+        <Rectangle id="progress_bar" height="10" width="0"
+          visible="false" color="0xFFFFFFAA" translation="[50, 720]" />
+        <LayoutGroup translation="[50, 750]">
+          <LayoutGroup layoutDirection="horiz">
+            <Label id="elapsed_time_label"
+              color="0xFFFFFFFF"
+              horizAlign="left"
+              visible="false"
+              width="100">
+              <Font
+                role="font"
+                uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+                id="avenir-light"
+                size="40"
+              />
+            </Label>
+            <Rectangle height="80" width="1620" color="0x00000000" />
+            <Label id="duration_label"
+              color="0xFFFFFFFF"
+              horizAlign="right"
+              visible="false"
+              width="100">
+              <Font
+                role="font"
+                uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+                id="avenir-light"
+                size="40"
+              />
+            </Label>
+          </LayoutGroup>
+          <Label id="audio_indicator"
+            text="N"
+            color="0xFFFFFFFF"
+            horizAlign="center"
+            visible="false"
+            width="1920">
+            <Font
+              role="font"
+              uri="pkg:/components/fonts/sosa-regular-webfont.ttf"
+              id="sosa-regular"
+              size="100"
+            />
+          </Label>
+        </LayoutGroup>
+        <Audio id="audio_player" />
+        <Timer id="refresh_timer" />
+        <Timer id="elapsedTime_timer" />
+    </children>
+</component>

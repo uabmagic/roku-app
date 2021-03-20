@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="ListenTask" extends="BaseTask">
+    <interface>
+        <field id="current_info" type="associativearray" />
+    </interface>
+
+    <script type="text/brightscript" uri="ListenTask.brs" />
+</component>
