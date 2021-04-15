@@ -1,5 +1,5 @@
 function executeTask() as void
-  urlTransfer = createUrlTransfer("https://uabmagic-api.now.sh/api/songs/nowplaying")
+  urlTransfer = createUrlTransfer("https://uabmagic-api.vercel.app/api/songs/nowplaying")
   json = getJson(urlTransfer)
 
   nowplaying_info = CreateObject("roAssociativeArray")
