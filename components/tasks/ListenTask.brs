@@ -1,9 +1,10 @@
 function executeTask() as void
-  urlTransfer = createUrlTransfer("https://uabmagic-api.vercel.app/api/songs/nowplaying")
-  json = getJson(urlTransfer)
+  json = get("songs/now-playing", false)
 
   nowplaying_info = CreateObject("roAssociativeArray")
   current_info = CreateObject("roSGNode", "NowPlayingNode")
+
+  if json = invalid return
 
   current_info.themeParkAndLand = json.themeParkAndLand
   current_info.attractionAndSong = json.attractionAndSong

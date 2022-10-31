@@ -1,14 +1,31 @@
-sub show(args as object)
+sub init()
   m.top.setFocus(true)
+
   m.is_playing = false
 
   m.durationDisplay = ""
   m.duration = 30
   m.elapsed_time = 30
 
+  m.button_group = m.top.findNode("button_group")
+
+  m.toggle_button = m.top.findNode("toggle_button")
+  m.toggle_button.observeField("buttonSelected", "onTogglePressed")
+  m.toggle_button.focusedTextFont = m.lightFont
+  m.toggle_button.textFont = m.lightFont
+  m.toggle_button.focusedTextColor = "0x000000ff"
+  m.toggle_button.textColor = "0xffffffff"
+
+  m.whatsnext_button = m.top.findNode("whatsnext_button")
+  m.whatsnext_button.observeField("buttonSelected", "onWhatsNextPressed")
+  m.whatsnext_button.focusedTextFont = m.lightFont
+  m.whatsnext_button.textFont = m.lightFont
+  m.whatsnext_button.focusedTextColor = "0x000000ff"
+  m.whatsnext_button.textColor = "0xffffffff"
+
   setUpLabels()
 
-  buildListenTask()
+  buildTasks()
 
   setUpElapsedTimeTimer()
   setUpRefreshTimer()
@@ -16,6 +33,14 @@ sub show(args as object)
   setUpAudio()
 
   refreshData()
+
+  m.top.observeField("visible", "onGetFocus")
+end sub
+
+sub onGetFocus()
+  if m.top.visible = true
+    m.button_group.setFocus(true)
+  end if
 end sub
 
 function setUpLabels() as void
@@ -25,12 +50,9 @@ function setUpLabels() as void
   m.current_track_artist_name = m.top.findNode("current_track_artist_name")
   m.current_show_name = m.top.findNode("current_show_name")
   m.requestor = m.top.findNode("requestor")
-  ' m.upcoming_track_info = m.top.findNode("upcoming_track_info")
 
   m.current_show_image_path = m.top.findNode("current_show_image_path")
   m.background = m.top.findNode("background")
-
-  m.audio_indicator = m.top.findNode("audio_indicator")
 
   m.duration_label = m.top.findNode("duration_label")
   m.elapsed_time_label = m.top.findNode("elapsed_time_label")
@@ -39,7 +61,7 @@ function setUpLabels() as void
   m.progress_bar_background = m.top.findNode("progress_bar_background")
 end function
 
-function buildListenTask() as void
+function buildTasks() as void
   m.listenTask = CreateObject("roSGNode", "ListenTask")
   m.listenTask.ObserveField("current_info", "onCurrentInfoChanged")
 end function
@@ -74,27 +96,28 @@ function setUpAudio() as void
 end function
 
 function refreshData() as void
-  print "refreshData()"
-  m.listenTask.control = "RUN"
+  m.listenTask.control = "run"
 end function
 
 function playAudio() as void
   if (m.is_playing) then
     m.audio.control = "stop"
-    m.audio_indicator.text = "N"
+    m.toggle_button.focusedIconUri = "pkg:/images/play_black.png"
+    m.toggle_button.iconUri = "pkg:/images/play_white.png"
+    m.toggle_button.text = "Play"
     m.is_playing = false
   else
     m.audio.control = "play"
-    m.audio_indicator.text = "O"
+    m.toggle_button.focusedIconUri = "pkg:/images/pause_black.png"
+    m.toggle_button.iconUri = "pkg:/images/pause_white.png"
+    m.toggle_button.text = "Pause"
     m.is_playing = true
   end if
 end function
 
 function onKeyEvent(key as string, press as boolean) as boolean
-  handled = false
-
   if press then
-    if (key = "play") then
+    if key = "play" then
       playAudio()
       handled = true
     end if
@@ -106,21 +129,26 @@ sub onCurrentInfoChanged()
 
   current_info = m.listenTask.current_info["nowplaying"]
 
-  m.title.text = Substitute("UABMagic - Now Playing: {0}", current_info.schedule)
+  m.title.text = current_info.schedule
 
   m.current_track_title.text = current_info.attractionAndSong
-  m.current_track_artist_name.text = current_info.themeParkAndLand
+  m.current_track_artist_name.text = UCase(current_info.themeParkAndLand)
   m.current_show_image_path.uri = current_info.imageUrl
 
   if (current_info.requestor <> "") then
     m.requestor.visible = true
-    m.requestor.text = Substitute("Requested by: {0}", current_info.requestor)
+    m.requestor.text = Substitute("Requested by {0}", current_info.requestor)
   else
     m.requestor.visible = false
   end if
 
-  ' upNext = current_info.upNext.join(chr(10).ToStr() + "- ")
-  ' m.upcoming_track_info.text = upNext
+  whatsNext = ""
+
+  for each song in current_info.upNext
+    whatsNext += (chr(10) + "- " + song)
+  end for
+
+  m.top.whatsNext = whatsNext
 
   m.background.uri = current_info.blurredImageUrl
 
@@ -150,24 +178,31 @@ sub updateElapsedTime()
 
   elapsedTime = m.duration - m.elapsed_time
   time_minutes = Int(elapsedTime / 60)
-  time_seconds = elapsedTime MOD 60
+  time_seconds = elapsedTime mod 60
 
-  time_seconds_formatted = time_seconds.ToStr()
+  time_seconds_formatted = time_seconds.tostr()
 
   if time_seconds < 10 then
-    time_seconds_formatted = Substitute("0{0}", time_seconds.ToStr())
+    time_seconds_formatted = Substitute("0{0}", time_seconds.tostr())
   end if
 
-  m.elapsed_time_label.text = Substitute("{0}:{1}", time_minutes.ToStr(), time_seconds_formatted)
+  m.elapsed_time_label.text = Substitute("{0}:{1}", time_minutes.tostr(), time_seconds_formatted)
 
   m.progress_bar.width = (1 - (m.elapsed_time / m.duration)) * 1820
 end sub
 
 function toggleVisibility(visible as boolean)
-  m.audio_indicator.visible = visible
   m.duration_label.visible = visible
   m.elapsed_time_label.visible = visible
 
   m.progress_bar.visible = visible
   m.progress_bar_background.visible = visible
 end function
+
+sub onTogglePressed()
+  playAudio()
+end sub
+
+sub onWhatsNextPressed()
+  m.top.showDialog = true
+end sub

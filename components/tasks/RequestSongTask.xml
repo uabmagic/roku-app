@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="RequestSongTask" extends="BaseTask">
+  <interface>
+    <field id="songId" type="integer" />
+    <field id="response" type="node" />
+  </interface>
+
+  <script type="text/brightscript" uri="RequestSongTask.brs" />
+</component>

@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="ListenScene" extends="BaseScene"
-  xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd"
-  initialFocus="audio_control_button">
+<component name="ListenScene" extends="UABBaseScene" initialFocus="button_group"
+  xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+    <interface>
+      <field id="whatsNext" type="string" />
+      <field id="showDialog" type="boolean" />
+    </interface>
+
     <script type="text/brightscript" uri="pkg:/components/ListenScene.brs" />
+
     <children>
+      <Group id="container" translation="[0, 50]">
         <!-- Background image -->
         <Poster id="background"
-          height="1080"
+          height="1030"
           width="1920"
           loadDisplayMode="scaleToZoom" />
-        <Rectangle height="1080" width="1920" color="0x00000055" />
-        <!-- Top bar -->
+        <Rectangle height="1030" width="1920" color="0x00000055" />
+        <!-- Schedule -->
         <Label id="title"
-            text="UABMagic - Now Playing"
-            color="0xFFFFFFAA"
-            translation="[20, 20]">
-            <Font
-                role="font"
-                uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
-                id="avenir-light"
-                size="30"
-            />
+          text=""
+          color="0xFFFFFFAA"
+          translation="[50, 30]">
+          <Font
+            role="font"
+            uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+            id="avenir-light"
+            size="30"
+          />
         </Label>
         <!-- Song info -->
-        <LayoutGroup layoutDirection="horiz" itemSpacings="[50, 0]" translation="[50, 130]">
+        <LayoutGroup layoutDirection="horiz" itemSpacings="[50, 0]" translation="[50, 80]">
           <Poster
               id="current_show_image_path"
               width="550"
@@ -40,6 +46,17 @@
                 size="30"
               />
             </Label>
+            <Label id="current_track_artist_name"
+              color="0xFFFFFFAA"
+              horizAlign="left"
+              width="1200">
+              <Font
+                role="font"
+                uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+                id="avenir-light"
+                size="36"
+              />
+            </Label>
             <Label id="current_track_title" text="Loading..."
               color="0xFFFFFFFF"
               horizAlign="left"
@@ -49,18 +66,7 @@
                 role="font"
                 uri="pkg:/components/fonts/avenir_85_heavy_latin.ttf"
                 id="avenir-heavy-latin"
-                size="50"
-              />
-            </Label>
-            <Label id="current_track_artist_name"
-              color="0xFFFFFFFF"
-              horizAlign="left"
-              width="1200">
-              <Font
-                role="font"
-                uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
-                id="avenir-light"
-                size="40"
+                size="55"
               />
             </Label>
             <Label id="requestor"
@@ -75,35 +81,6 @@
                 size="40"
               />
             </Label>
-            <!-- <LayoutGroup itemSpacings="[0, 10]">
-              <Label
-                color="0xFFFFFFFF"
-                horizAlign="left"
-                text="Upcoming songs"
-                visible="false"
-                width="1200"
-                wrap="true">
-                <Font
-                  role="font"
-                  uri="pkg:/components/fonts/avenir_85_heavy_latin.ttf"
-                  id="avenir-heavy-latin"
-                  size="25"
-                />
-              </Label>
-              <Rectangle height="2" width="300" color="0xFFFFFF88" />
-              <Label id="upcoming_track_info"
-                color="0xFFFFFFFF"
-                horizAlign="left"
-                width="1200"
-                wrap="true">
-                <Font
-                  role="font"
-                  uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
-                  id="avenir-light"
-                  size="20"
-                />
-              </Label>
-            </LayoutGroup> -->
           </LayoutGroup>
         </LayoutGroup>
         <!-- Media controls -->
@@ -140,7 +117,7 @@
               />
             </Label>
           </LayoutGroup>
-          <Label id="audio_indicator"
+          <!-- <Label id="audio_indicator"
             text="N"
             color="0xFFFFFFFF"
             horizAlign="center"
@@ -152,10 +129,33 @@
               id="sosa-regular"
               size="100"
             />
-          </Label>
+          </Label> -->
+          <!-- <Font
+              role="font"
+              uri="pkg:/components/fonts/sosa-regular-webfont.ttf"
+              id="sosa-regular"
+              size="100"
+            /> -->
+          <ButtonGroup id="button_group">
+            <Button id="toggle_button"
+              focusedIconUri="pkg:/images/play_black.png"
+              focusedTextColor="0x000000ff"
+              iconUri="pkg:/images/play_white.png"
+              text="Play"
+              textColor="0xffffffff"
+            />
+            <Button id="whatsnext_button"
+              focusedIconUri="pkg:/images/queue_black.png"
+              focusedTextColor="0x000000ff"
+              iconUri="pkg:/images/queue_white.png"
+              text="What's Next?"
+              textColor="0xffffffff" />
+          </ButtonGroup>
         </LayoutGroup>
+
         <Audio id="audio_player" />
         <Timer id="refresh_timer" />
         <Timer id="elapsedTime_timer" />
+      </Group>
     </children>
 </component>

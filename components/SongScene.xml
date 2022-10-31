@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="SongScene" extends="Group" initialFocus="request_button"
+   xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+    <script type="text/brightscript" uri="pkg:/components/SongScene.brs" />
+
+    <interface>
+      <field id="songId" type="integer" />
+    </interface>
+
+    <children>
+      <Group>
+        <BusySpinner id="spinner"
+          translation="[910, 490]"
+          visible="true"
+        />
+
+        <!-- Background image -->
+        <Poster id="background"
+          height="1080"
+          visible="false"
+          width="1920"
+          loadDisplayMode="scaleToZoom" />
+
+        <Rectangle height="1080" width="1920" color="0x00000055" />
+
+        <LayoutGroup id="layout_group"
+          itemSpacings="[32, 0]"
+          layoutDirection="horiz"
+          translation="[50, 50]"
+          visible="false"
+        >
+          <Poster id="image" height="550" width="550" />
+          <LayoutGroup>
+            <Label id="themeParkAndLand"
+                color="0xFFFFFFAA"
+                horizAlign="left"
+                width="1200">
+                <Font
+                  role="font"
+                  uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+                  id="avenir-light"
+                  size="36"
+                />
+              </Label>
+              <Label id="attractionAndSong" text="Loading..."
+                color="0xFFFFFFFF"
+                horizAlign="left"
+                width="1200"
+                wrap="true">
+                <Font
+                  role="font"
+                  uri="pkg:/components/fonts/avenir_85_heavy_latin.ttf"
+                  id="avenir-heavy-latin"
+                  size="55"
+                />
+              </Label>
+              <MultiStyleLabel
+                id="duration"
+                text=""
+                horizAlign="left"
+                width="1200"
+                wrap="true"
+              />
+              <MultiStyleLabel
+                id="lastPlayed"
+                text=""
+                horizAlign="left"
+                width="1200"
+                wrap="true"
+              />
+              <MultiStyleLabel
+                id="year"
+                text=""
+                horizAlign="left"
+                width="1200"
+                wrap="true"
+              />
+              <!-- <Label id="year" text=""
+                color="0xFFFFFFFF"
+                horizAlign="left"
+                width="1200"
+                wrap="true">
+                <Font
+                  role="font"
+                  uri="pkg:/components/fonts/avenir_45_book_latin.ttf"
+                  id="avenir-roman"
+                  size="36"
+                />
+              </Label> -->
+          </LayoutGroup>
+        </LayoutGroup>
+        <ButtonGroup id="songscene_button_group" translation="[50, 900]">
+          <Button id="request_button"
+            showFocusFootprint="true"
+            text="Request"
+            visible="false"
+          />
+          <!-- <Button id="favorite_button"
+            showFocusFootprint="true"
+            text="Favorite"
+            visible="false"
+          /> -->
+        </ButtonGroup>
+      </Group>
+    </children>
+</component>

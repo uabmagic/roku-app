@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="SearchScene" extends="Group" initialFocus="keyboard"
+  xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+    <script type="text/brightscript" uri="pkg:/components/SearchScene.brs" />
+
+    <interface>
+      <field id="selectedSongId" type="integer" />
+    </interface>
+
+    <children>
+      <Group translation="[50, 100]">
+        <Label text="Search">
+          <Font
+            role="font"
+            uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+            id="avenir-light"
+            size="50"
+          />
+        </Label>
+        <MiniKeyboard id="keyboard" translation="[100, 100]" />
+        <MarkupList
+          id="resultList"
+          focusBitmapBlendColor="0x3A98BAFF"
+          focusFootprintBlendColor="0x000000FF"
+          itemComponentName="Song"
+          itemSize="[520, 220]"
+          itemSpacing="[20, 20]"
+          numRows="4"
+          translation="[900, 100]" />
+      </Group>
+    </children>
+</component>

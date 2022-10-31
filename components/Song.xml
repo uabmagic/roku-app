@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="Song" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" onChange="showContent" />
+    </interface>
+
+    <script type="text/brightscript" uri="pkg:/components/Song.brs" />
+
+    <children>
+      <Group translation="[10, 30]">
+        <Rectangle color="0x000000FF" height="200" width="500" />
+        <LayoutGroup layoutDirection="horiz"
+            itemSpacings="[16]"
+        >
+          <Poster id="image" height="200" width="200" />
+          <LayoutGroup itemSpacings="[16]">
+            <Label
+                id="attractionAndSong"
+                color="0xFFFFFFFF"
+                horizAlign="left"
+                lineSpacing="5"
+                numLines="3"
+                text=""
+                width="264"
+                wrap="true"
+              >
+              <Font
+                role="font"
+                uri="pkg:/components/fonts/avenir_55_roman_latin.ttf"
+                id="avenir-book"
+                size="20"
+              />
+            </Label>
+            <Label
+                id="themeParkAndLand"
+                color="0xFFFFFFAA"
+                horizAlign="left"
+                lineSpacing="5"
+                numLines="2"
+                text=""
+                width="264"
+                wrap="true"
+              >
+              <Font
+                role="font"
+                uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+                id="avenir-light"
+                size="18"
+              />
+            </Label>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Group>
+    </children>
+</component>

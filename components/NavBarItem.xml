@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="NavBarItem" extends="Group">
+    <interface>
+        <field id="itemContent" type="node" />
+        <field id="width" type="float"/>
+        <field id="height" type="float"/>
+        <field id="index" type="integer"/>
+        <field id="gridHasFocus" type="boolean"/>
+        <field id="focusPercent" type="float"/>
+        <field id="itemHasFocus" type="boolean"/>
+    </interface>
+    <children>
+      <Group>
+        <Poster id="poster" />
+        <Label id="label"
+          height="50"
+          horizAlign="center"
+          text=""
+          vertAlign="center"
+          width="140"
+        >
+          <Font
+            role="font"
+            uri="pkg:/components/fonts/avenir_45_book_latin.ttf"
+            id="avenir-book"
+            size="30"
+          />
+        </Label>
+      </Group>
+    </children>
+    <script type="text/brightscript" uri="pkg:/components/NavBarItem.brs" />
+</component>

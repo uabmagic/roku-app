@@ -13,7 +13,7 @@ function init()
 
   m.listenTask = CreateObject("roSGNode", "ListenTask")
   m.listenTask.ObserveField("current_info", "onCurrentInfoChanged")
-  m.listenTask.control = "RUN"
+  m.listenTask.control = "run"
 
   m.changepost_timer = m.top.findNode("changepost_timer")
   m.changepost_timer.control = "start"
@@ -28,5 +28,5 @@ sub onCurrentInfoChanged()
 end sub
 
 sub changePost()
-  m.listenTask.control = "RUN"
+  m.listenTask.control = "run"
 end sub
