@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="SongResultNode" extends="ContentNode">
+  <interface>
+    <field id="id" type="integer" />
+    <field id="canRequest" type="boolean" />
+    <field id="durationDisplay" type="string" />
+    <field id="hdPosterUrl" type="string" />
+    <field id="attractionAndSong" type="string" />
+    <field id="themeParkAndLand" type="string" />
+    <field id="blurredUrl" type="string" />
+    <field id="url" type="string" />
+    <field id="year" type="string" />
+    <field id="composer" type="string" />
+    <field id="dateAdded" type="string" />
+    <field id="lastPlayed" type="string" />
+    <field id="lastRequested" type="string" />
+    <field id="comments" type="integer" />
+    <field id="plays" type="integer" />
+    <field id="requests" type="integer" />
+  </interface>
+</component>

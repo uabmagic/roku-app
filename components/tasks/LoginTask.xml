@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="LoginTask" extends="BaseTask">
+  <interface>
+    <field id="password" type="string" />
+    <field id="username" type="string" />
+    <field id="user_info" type="node" />
+  </interface>
+
+  <script type="text/brightscript" uri="LoginTask.brs" />
+</component>

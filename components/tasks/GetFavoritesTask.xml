@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="GetFavoritesTask" extends="BaseTask">
+  <interface>
+    <field id="results" type="node" />
+  </interface>
+
+  <script type="text/brightscript" uri="GetFavoritesTask.brs" />
+</component>

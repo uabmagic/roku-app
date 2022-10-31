@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="SettingsScene" extends="UABBaseScene" initialFocus="button_group"
+  xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+    <script type="text/brightscript" uri="pkg:/components/SettingsScene.brs" />
+
+    <children>
+      <Group translation="[50, 100]">
+        <Label text="Settings">
+          <Font
+            role="font"
+            uri="pkg:/components/fonts/avenir_35_light_latin.ttf"
+            id="avenir-light"
+            size="50"
+          />
+        </Label>
+        <ButtonGroup id="button_group" translation="[100, 100]">
+          <Button id="refresh_credentials_button"
+            showFocusFootprint="true"
+            text="Refresh Credentials"
+            visible="true"
+          />
+        </ButtonGroup>
+      </Group>
+    </children>
+</component>

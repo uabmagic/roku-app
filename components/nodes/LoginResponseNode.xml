@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="LoginResponseNode" extends="ContentNode">
+    <interface>
+        <field id="sid" type="string" />
+        <field id="userId" type="integer" />
+    </interface>
+</component>
