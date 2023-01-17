@@ -1,5 +1,5 @@
 function executeTask() as void
-  json = getWithAuth("roku/favorites")
+  json = getWithAuth("favorites")
 
   results = CreateObject("roSGNode", "ContentNode")
 

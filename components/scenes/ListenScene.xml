@@ -6,7 +6,7 @@
       <field id="showDialog" type="boolean" />
     </interface>
 
-    <script type="text/brightscript" uri="pkg:/components/ListenScene.brs" />
+    <script type="text/brightscript" uri="pkg:/components/scenes/ListenScene.brs" />
 
     <children>
       <Group id="container" translation="[0, 50]">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <component name="MainScene" extends="Scene">
-  <script type="text/brightscript" uri="pkg:/components/MainScene.brs" />
+  <script type="text/brightscript" uri="pkg:/components/scenes/MainScene.brs" />
   <children>
     <Group id="container">
       <ListenScene

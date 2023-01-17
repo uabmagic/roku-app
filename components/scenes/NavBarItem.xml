@@ -28,5 +28,5 @@
         </Label>
       </Group>
     </children>
-    <script type="text/brightscript" uri="pkg:/components/NavBarItem.brs" />
+    <script type="text/brightscript" uri="pkg:/components/scenes/NavBarItem.brs" />
 </component>

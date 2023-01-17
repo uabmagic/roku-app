@@ -218,6 +218,11 @@ sub buildTasks()
   m.loginTask = CreateObject("roSGNode", "LoginTask")
   m.loginTask.ObserveField("user_info", "onUserLoggedIn")
 
+  ' *** REMOVE ***
+  m.loginTask.username = ""
+  m.loginTask.password = ""
+  ' *** REMOVE ***
+
   m.loginTask.control = "run"
 end sub
 

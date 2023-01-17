@@ -2,7 +2,7 @@
 
 <component name="SearchScene" extends="Group" initialFocus="keyboard"
   xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
-    <script type="text/brightscript" uri="pkg:/components/SearchScene.brs" />
+    <script type="text/brightscript" uri="pkg:/components/scenes/SearchScene.brs" />
 
     <interface>
       <field id="selectedSongId" type="integer" />

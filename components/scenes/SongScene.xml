@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="SongScene" extends="Group" initialFocus="request_button"
+<component name="SongScene" extends="UABBaseScene" initialFocus="request_button"
    xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
-    <script type="text/brightscript" uri="pkg:/components/SongScene.brs" />
+    <script type="text/brightscript" uri="pkg:/components/scenes/SongScene.brs" />
 
     <interface>
       <field id="songId" type="integer" />
@@ -9,10 +9,8 @@
 
     <children>
       <Group>
-        <BusySpinner id="spinner"
-          translation="[910, 490]"
-          visible="true"
-        />
+        <Spinner id="spinner"
+          translation="[910, 490]" />
 
         <!-- Background image -->
         <Poster id="background"
@@ -101,6 +99,8 @@
             visible="false"
           /> -->
         </ButtonGroup>
+
+        <ToastMessage id="toast" visible="false" />
       </Group>
     </children>
 </component>

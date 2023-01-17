@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <component name="SettingsScene" extends="UABBaseScene" initialFocus="button_group"
   xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
-    <script type="text/brightscript" uri="pkg:/components/SettingsScene.brs" />
+    <script type="text/brightscript" uri="pkg:/components/scenes/SettingsScene.brs" />
 
     <children>
       <Group translation="[50, 100]">

@@ -1,7 +1,12 @@
 function executeTask() as void
-  url = "roku/auth/login?username=" + m.top.username + "&password=" + m.top.password
+  url = "auth/login"
 
-  json = get(url, false)
+  login_request = {
+    password: m.top.password,
+    username: m.top.username
+  }
+
+  json = postJson(url, login_request)
 
   user_info = CreateObject("roSGNode", "LoginResponseNode")
 

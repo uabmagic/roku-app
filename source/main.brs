@@ -1,5 +1,5 @@
-sub RunUserInterface()
-
+' sub RunUserInterface()
+sub Main (args as dynamic) as void
   screen = CreateObject("roSGScreen")
   m.port = CreateObject("roMessagePort")
   screen.setMessagePort(m.port)

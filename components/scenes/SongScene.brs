@@ -4,27 +4,14 @@ sub init()
   m.attractionAndSong = m.top.findNode("attractionAndSong")
   m.themeParkAndLand = m.top.findNode("themeParkAndLand")
 
-  drawingStyles = {
-    "Bold": {
-      "fontUri": "pkg:/components/fonts/avenir_85_heavy_latin.ttf"
-      "fontSize": 36
-      "color": "#ffffff"
-    },
-    "Normal": {
-      "fontUri": "pkg:/components/fonts/avenir_45_book_latin.ttf"
-      "fontSize": 36
-      "color": "#ffffff"
-    }
-  }
-
   m.duration = m.top.findNode("duration")
-  m.duration.drawingStyles = drawingStyles
+  m.duration.drawingStyles = m.drawingStyles
 
   m.lastPlayed = m.top.findNode("lastPlayed")
-  m.lastPlayed.drawingStyles = drawingStyles
+  m.lastPlayed.drawingStyles = m.drawingStyles
 
   m.year = m.top.findNode("year")
-  m.year.drawingStyles = drawingStyles
+  m.year.drawingStyles = m.drawingStyles
 
   m.songscene_button_group = m.top.findNode("songscene_button_group")
 
@@ -34,6 +21,7 @@ sub init()
   ' m.favorite_button.observeField("buttonSelected", "onFavoritePressed")
 
   m.spinner = m.top.findNode("spinner")
+  m.toast = m.top.findNode("toast")
   m.layout_group = m.top.findNode("layout_group")
 
   m.top.observeField("songId", "onSongIdChange")
@@ -48,8 +36,6 @@ sub onGetFocus()
 
   if m.top.visible
     m.spinner.visible = true
-    m.spinner.control = "start"
-    m.spinner.poster.uri = "pkg:/images/spinner.png"
 
     m.background.visible = false
     m.layout_group.visible = false
@@ -77,7 +63,6 @@ end sub
 
 sub onSongRetrieved()
   m.spinner.visible = false
-  m.spinner.control = "stop"
 
   m.background.visible = true
   m.layout_group.visible = true
@@ -101,6 +86,16 @@ end sub
 sub onSongRequested()
   response = m.requestSongTask.response
   ? "onSongRequested() // success: " + response.success.tostr() + ", requestId: " + response.requestId.tostr()
+
+  ? "here"
+  message = "Please try again later"
+
+  if response.success = true
+    message = "Success!"
+  end if
+
+  m.toast.message = message
+  m.toast.visible = true
 end sub
 
 sub onRequestPressed()

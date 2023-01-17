@@ -5,5 +5,5 @@
       <field id="refreshCredentials" type="integer" />
     </interface>
 
-    <script type="text/brightscript" uri="pkg:/components/UABBaseScene.brs" />
+    <script type="text/brightscript" uri="pkg:/components/scenes/UABBaseScene.brs" />
 </component>

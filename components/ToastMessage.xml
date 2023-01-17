@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ToastMessage" extends="Group">
+  <interface>
+    <field id="message" type="string" />
+  </interface>
+
+  <children>
+    <Group id="toastGroup" opacity="1" translation="[1370, 900]">
+      <Rectangle width="500" height="50" color="0x00A170FF" /> <!-- Green/Success -->
+      <!-- <Rectangle width="500" height="50" color="0xA10031FF" /> Red/Error -->
+      <Label id="messageLabel"
+        color="0xFFFFFFFF"
+        horizAlign="center"
+      />
+      <Animation id="fadeAnim" duration="3" repeat="false" easeFunction="linear">
+        <FloatFieldInterpolator keyValue="[1, 0.5, 0]" key="[0, 0.5, 1]" fieldToInterp="toastGroup.opacity" />
+        <!-- <FloatFieldInterpolator id="outOpacity" key="[0.0, 0.5, 1.0]" keyValue="[ 1, 0, 0 ]" fieldToInterp="focus.opacity" />
+        <FloatFieldInterpolator id="inOpacity" key="[0.0, 0.5, 1.0]" keyValue="[ 0, 0, 1 ]" fieldToInterp="focus.opacity" /> -->
+      </Animation>
+      <Timer id="display_timer" />
+    </Group>
+  </children>
+
+  <script type="text/brightscript" uri="ToastMessage.brs" />
+</component>

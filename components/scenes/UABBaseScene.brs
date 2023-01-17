@@ -10,6 +10,19 @@ sub refreshCredentials()
 end sub
 
 sub setupFonts()
+  m.drawingStyles = {
+    "Bold": {
+      "fontUri": "pkg:/components/fonts/avenir_85_heavy_latin.ttf"
+      "fontSize": 36
+      "color": "#ffffff"
+    },
+    "Normal": {
+      "fontUri": "pkg:/components/fonts/avenir_45_book_latin.ttf"
+      "fontSize": 36
+      "color": "#ffffff"
+    }
+  }
+
   m.lightFont = CreateObject("roSGNode", "Font")
   m.lightFont.uri = "pkg:/components/fonts/avenir_35_light_latin.ttf"
   m.lightFont.size = 30

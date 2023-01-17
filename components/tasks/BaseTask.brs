@@ -21,15 +21,16 @@ function createUrlTransfer(url as string, addAuth as boolean)
     user_info = getSavedAuthInfo()
 
     if user_info <> invalid
-      ' ? user_info
-      queryChar = "?"
+      ' ' ? user_info
+      ' queryChar = "?"
 
-      if instr(1, url, "?")
-        queryChar = "&"
-      end if
+      ' if instr(1, url, "?")
+      '   queryChar = "&"
+      ' end if
 
-      values = user_info.split(":")
-      url = url + queryChar + "userId=" + values[0] + "&sid=" + values[1]
+      ' values = user_info.split(":")
+      ' url = url + queryChar + "userId=" + values[0] + "&sid=" + values[1]
+      urlTransfer.AddHeader("Authorization", user_info)
     end if
   end if
 
@@ -71,4 +72,27 @@ function getSavedAuthInfo() as string
   end if
 
   return userId + ":" + sid
+end function
+
+function postJson(url, data as object, addAuth = false as boolean)
+  req = createUrlTransfer(url, addAuth)
+
+  req.setMessagePort(CreateObject("roMessagePort"))
+
+  json = FormatJson(data)
+  req.AsyncPostFromString(json)
+
+  resp = wait(30000, req.GetMessagePort())
+
+  if type(resp) <> "roUrlEvent"
+    return invalid
+  end if
+
+  if resp.getString() = ""
+    return invalid
+  end if
+
+  json = ParseJson(resp.GetString())
+
+  return json
 end function

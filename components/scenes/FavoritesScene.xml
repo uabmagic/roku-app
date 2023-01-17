@@ -2,7 +2,7 @@
 
 <component name="FavoritesScene" extends="UABBaseScene"
   xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
-    <script type="text/brightscript" uri="pkg:/components/FavoritesScene.brs" />
+    <script type="text/brightscript" uri="pkg:/components/scenes/FavoritesScene.brs" />
 
     <interface>
       <field id="selectedSongId" type="integer" />

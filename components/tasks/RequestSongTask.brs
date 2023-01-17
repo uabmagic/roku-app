@@ -1,7 +1,9 @@
 function executeTask() as void
-  songId = m.top.songId.tostr()
+  request = {
+    songId: m.top.songId
+  }
 
-  json = getWithAuth("roku/request?songId=" + songId)
+  json = postJson("request", request, true)
 
   response = CreateObject("roSGNode", "SongRequestResponseNode")
 

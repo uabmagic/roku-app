@@ -1,6 +1,10 @@
-# UABListen for Roku
+# UABMagic Roku Application
 
-### Quick start
+Listen to UABMagic, request songs, and view your favorites from your Roku TV!
+
+![Listen_Screen](https://raw.githubusercontent.com/uabmagic/brand/main/screenshots/roku/0.jpg 'Listen Screen')
+
+### Dev Quick start
 
 Using your Roku remote, enter the following button sequence:
 
